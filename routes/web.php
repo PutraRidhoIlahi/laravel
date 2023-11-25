@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+use App\Http\Controllers\TableController;
+Route::get('/table', [TableController::class, 'showTable']);
+Route::get('/data-tables', [TableController::class, 'showDataTables']);
 Route::get('/', 'HomeController@index');
 Route::get('/register', 'AuthController@register');
 Route::post('/welcome', 'AuthController@welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
